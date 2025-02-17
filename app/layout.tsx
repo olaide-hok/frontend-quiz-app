@@ -1,7 +1,6 @@
 import {Provider} from '@/components/ui/provider';
 import type {Metadata} from 'next';
 import {Rubik} from 'next/font/google';
-// import '@/assets/styles/globals.css';
 
 const rubikSerif = Rubik({
     variable: '--font-rubik-serif',
