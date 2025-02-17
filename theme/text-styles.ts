@@ -1,83 +1,29 @@
-import { defineTextStyles } from "@chakra-ui/react"
+import {defineTextStyles} from '@chakra-ui/react';
 
 export const textStyles = defineTextStyles({
-  "2xs": {
-    value: {
-      fontSize: "2xs",
-      lineHeight: "0.75rem",
+    bodyItalic: {
+        value: {
+            fontFamily: 'Rubik',
+            fontWeight: '400',
+            fontSize: '14px',
+            fontStyle: 'italic',
+            lineHeight: '150%',
+        },
     },
-  },
-  xs: {
-    value: {
-      fontSize: "xs",
-      lineHeight: "1rem",
+    headingRegular: {
+        value: {
+            fontFamily: 'Rubik',
+            fontWeight: '300',
+            fontSize: '40px',
+            lineHeight: '100%',
+        },
     },
-  },
-  sm: {
-    value: {
-      fontSize: "sm",
-      lineHeight: "1.25rem",
+    headingBold: {
+        value: {
+            fontFamily: 'Rubik',
+            fontWeight: '500',
+            fontSize: '40px',
+            lineHeight: '100%',
+        },
     },
-  },
-  md: {
-    value: {
-      fontSize: "md",
-      lineHeight: "1.5rem",
-    },
-  },
-  lg: {
-    value: {
-      fontSize: "lg",
-      lineHeight: "1.75rem",
-    },
-  },
-  xl: {
-    value: {
-      fontSize: "xl",
-      lineHeight: "1.875rem",
-    },
-  },
-  "2xl": {
-    value: {
-      fontSize: "2xl",
-      lineHeight: "2rem",
-    },
-  },
-  "3xl": {
-    value: {
-      fontSize: "3xl",
-      lineHeight: "2.375rem",
-    },
-  },
-  "4xl": {
-    value: {
-      fontSize: "4xl",
-      lineHeight: "2.75rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  "5xl": {
-    value: {
-      fontSize: "5xl",
-      lineHeight: "3.75rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  "6xl": {
-    value: {
-      fontSize: "6xl",
-      lineHeight: "4.5rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  "7xl": {
-    value: {
-      fontSize: "7xl",
-      lineHeight: "5.75rem",
-      letterSpacing: "-0.025em",
-    },
-  },
-  none: {
-    value: {},
-  },
-})
+});
