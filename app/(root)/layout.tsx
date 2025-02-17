@@ -1,4 +1,5 @@
 import Header from '@/components/shared/header';
+import {Container} from '@chakra-ui/react';
 
 export default function RootLayout({
     children,
@@ -6,9 +7,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <main>
+        <Container padding={0}>
             <Header />
             {children}
-        </main>
+        </Container>
     );
 }
