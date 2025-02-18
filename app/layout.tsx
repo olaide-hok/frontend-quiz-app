@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${rubikSerif.variable}`}>
+            <body className={`bodycss ${rubikSerif.variable}`}>
                 <Provider>{children}</Provider>
             </body>
         </html>
