@@ -5,7 +5,7 @@ export const textStyles = defineTextStyles({
         value: {
             fontFamily: 'Rubik',
             fontWeight: '400',
-            fontSize: '14px',
+            fontSize: {base: '14px', md: '20px'},
             fontStyle: 'italic',
             lineHeight: '150%',
         },
@@ -14,7 +14,7 @@ export const textStyles = defineTextStyles({
         value: {
             fontFamily: 'Rubik',
             fontWeight: '300',
-            fontSize: '40px',
+            fontSize: {base: '40px', md: '64px'},
             lineHeight: '100%',
         },
     },
@@ -22,7 +22,7 @@ export const textStyles = defineTextStyles({
         value: {
             fontFamily: 'Rubik',
             fontWeight: '500',
-            fontSize: '40px',
+            fontSize: {base: '40px', md: '64px'},
             lineHeight: '100%',
         },
     },
