@@ -1,6 +1,8 @@
 'use client';
 
+import {useGlobalContext} from '@/context';
 import {Flex, Image} from '@chakra-ui/react';
+import questionData from '@/data.json';
 
 interface SubjectTileProps {
     name: string;
@@ -8,14 +10,20 @@ interface SubjectTileProps {
     bgColor: string;
 }
 const SubjectTile = ({name, src, bgColor}: SubjectTileProps) => {
+    const {quizzes} = questionData;
+    const {fetchQuestions, setQuiz} = useGlobalContext();
+
     return (
         <Flex
             as="button"
             columnGap={{base: '1rem', lg: '2rem'}}
             align="center"
-            onClick={() => console.log(name)}
+            onClick={() => {
+                setQuiz(name);
+                fetchQuestions(quizzes, name);
+            }}
             color="darkNavy"
-            fontSize="18px"
+            fontSize={{base: '18px', md: '28px'}}
             fontWeight="500"
             p={{base: '12px', lg: '20px'}}
             borderRadius="12px"
