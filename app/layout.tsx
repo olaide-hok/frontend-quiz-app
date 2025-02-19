@@ -1,4 +1,5 @@
 import {Provider} from '@/components/ui/provider';
+import {QuizProvider} from '@/context';
 import type {Metadata} from 'next';
 import {Rubik} from 'next/font/google';
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`bodycss ${rubikSerif.variable}`}>
-                <Provider>{children}</Provider>
+                <Provider>
+                    <QuizProvider>{children}</QuizProvider>
+                </Provider>
             </body>
         </html>
     );
