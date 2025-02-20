@@ -1,8 +1,8 @@
 'use client';
 
 import Landing from '@/components/shared/landing';
+import Question from '@/components/shared/question';
 import {useGlobalContext} from '@/context';
-import {Box} from '@chakra-ui/react';
 
 export default function Home() {
     const {waiting} = useGlobalContext();
@@ -12,5 +12,5 @@ export default function Home() {
         return <Landing />;
     }
 
-    return <Box>Start answering questions</Box>;
+    return <Question />;
 }
