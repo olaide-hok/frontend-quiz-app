@@ -30,8 +30,6 @@ const themeConfig = defineConfig({
         },
     },
     preflight: true,
-    cssVarsPrefix: 'chakra',
-    cssVarsRoot: ':where(:root, :host)',
     theme: {
         breakpoints,
         tokens,
