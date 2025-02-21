@@ -23,8 +23,21 @@ export const questionRecipe = defineSlotRecipe({
             py: {base: '12px', md: '32px'},
             bgColor: 'brandPurple',
             color: 'white',
-            borderRadius: '12px',
+            borderRadius: {base: '12px', md: '24px'},
             shadow: '0px 16px 40px 0px rgba(143, 160, 193, 0.14)',
+            _active: {
+                bgGradient:
+                    'linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%)',
+            },
+            _focus: {
+                bgGradient:
+                    'linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%)',
+            },
+            _hover: {
+                cursor: 'pointer',
+                bgGradient:
+                    'linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%)',
+            },
         },
     },
 });
