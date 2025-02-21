@@ -6,7 +6,6 @@ import {useGlobalContext} from '@/context';
 
 export default function Home() {
     const {waiting} = useGlobalContext();
-    console.log('waiting', waiting);
 
     if (waiting) {
         return <Landing />;
