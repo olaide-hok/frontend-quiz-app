@@ -3,6 +3,8 @@ import {breakpoints} from './breakpoints';
 import {textStyles} from './text-styles';
 import {tokens} from './tokens';
 import baseStyles from './base-styles';
+import {optionTileRecipe} from './optionTile.recipe';
+import {questionRecipe} from './question.recipe';
 
 const themeConfig = defineConfig({
     globalCss: {
@@ -45,17 +47,13 @@ const themeConfig = defineConfig({
                     solid: {value: '{colors.brandPurple}'},
                     focusRing: {value: '{colors.brandPurple}'},
                 },
-
-                // // {value: '#313E51'},
-                // navy: {value: '#3B4D66'},
-                // greyNavy: {value: '#626C7F'},
-                // lightBluish: {value: '#ABC1E1'},
-                // lightGrey: {value: '#F4F6FA'},
-                // green: {value: '#26D782'},
-                // red: {value: '#EE5454'},
             },
         },
         textStyles,
+        slotRecipes: {
+            optionTile: optionTileRecipe,
+            question: questionRecipe,
+        },
     },
 });
 
