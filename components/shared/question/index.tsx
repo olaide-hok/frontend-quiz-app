@@ -18,15 +18,23 @@ interface OptionTileType {
 const OptionTile = ({text, optLetter}: OptionTileType) => {
     const [selected, setSelected] = useState(false);
     const recipe = useSlotRecipe({key: 'optionTile'});
-    const optionTilestyles = recipe();
+    const optionTileStyles = recipe();
 
     return (
         <Box
             as="button"
-            css={optionTilestyles.button}
+            css={{
+                '&:hover div span:first-of-type': {
+                    bgColor: '#F6E7FF',
+                    color: 'brandPurple',
+                },
+                ...optionTileStyles.button,
+            }}
+            borderColor={selected ? 'brandPurple' : ''}
+            borderWidth={selected ? '3px' : ''}
             onClick={() => {
                 console.log('clicked me!');
-                setSelected(true);
+                setSelected((prevState) => !prevState); // Toggles the state
             }}>
             <HStack gap={{base: '1rem', md: '32px'}}>
                 <Box
@@ -34,7 +42,7 @@ const OptionTile = ({text, optLetter}: OptionTileType) => {
                     textStyle="headingTitle"
                     bgColor={selected ? 'brandPurple' : 'lightGrey'}
                     color={selected ? 'white' : 'greyNavy'}
-                    css={optionTilestyles.option}>
+                    css={optionTileStyles.option}>
                     {optLetter}
                 </Box>
 
