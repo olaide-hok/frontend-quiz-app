@@ -45,7 +45,7 @@ const Header = () => {
             align="center"
             py={{base: '1rem', md: '40px', lg: '0'}}
             px={{base: '1.5rem', md: '64px', lg: '0'}}>
-            {quiz ? quizIconAndName(quiz, subjects) : ''}
+            {quiz ? quizIconAndName(quiz, subjects) : <div />}
             <ModeToggle />
         </Flex>
     );
