@@ -13,9 +13,12 @@ export const optionTileRecipe = defineSlotRecipe({
             width: {base: '100%', lg: '564px'},
             p: {base: '12px', lg: '20px'},
             _dark: {bgColor: 'brandNavy'},
-            _hover: {cursor: 'pointer'},
+            _hover: {
+                cursor: 'pointer',
+                borderWidth: '3px',
+                borderColor: 'brandPurple',
+            },
             _active: {borderColor: 'brandPurple', borderWidth: '3px'},
-            _focus: {borderColor: 'brandPurple', borderWidth: '3px'},
         },
         option: {
             width: {base: '40px', md: '56px'},
