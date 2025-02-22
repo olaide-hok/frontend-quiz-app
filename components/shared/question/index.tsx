@@ -77,7 +77,7 @@ const Question = () => {
     const [showNoOptSelected, setShowNoOptSelected] = useState(false);
 
     const handleOptionClick = (opt: string) => {
-        setSelectedOption(opt); // Update selected option
+        setSelectedOption((prev) => (prev === opt ? '' : opt)); // Toggle selection - allows for selecting and deselecting
         setShowNoOptSelected(false); // Hide 'Please select an answer' warning text.
     };
 
