@@ -13,10 +13,11 @@ import {useState} from 'react';
 interface OptionTileType {
     text: string;
     optLetter: string;
+    isSelected: boolean;
+    onClick: () => void;
 }
 
-const OptionTile = ({text, optLetter}: OptionTileType) => {
-    const [selected, setSelected] = useState(false);
+const OptionTile = ({text, optLetter, isSelected, onClick}: OptionTileType) => {
     const recipe = useSlotRecipe({key: 'optionTile'});
     const optionTileStyles = recipe();
 
@@ -30,18 +31,17 @@ const OptionTile = ({text, optLetter}: OptionTileType) => {
                 },
                 ...optionTileStyles.button,
             }}
-            borderColor={selected ? 'brandPurple' : ''}
-            borderWidth={selected ? '3px' : ''}
+            borderColor={isSelected ? 'brandPurple' : ''}
+            borderWidth={isSelected ? '3px' : ''}
             onClick={() => {
-                console.log('clicked me!');
-                setSelected((prevState) => !prevState); // Toggles the state
+                onClick();
             }}>
             <HStack gap={{base: '1rem', md: '32px'}}>
                 <Box
                     as="span"
                     textStyle="headingTitle"
-                    bgColor={selected ? 'brandPurple' : 'lightGrey'}
-                    color={selected ? 'white' : 'greyNavy'}
+                    bgColor={isSelected ? 'brandPurple' : 'lightGrey'}
+                    color={isSelected ? 'white' : 'greyNavy'}
                     css={optionTileStyles.option}>
                     {optLetter}
                 </Box>
@@ -73,6 +73,13 @@ const Question = () => {
     const {questions, index, checkAnswer} = useGlobalContext();
     const {questions: questionsArray} = questions[0];
     const {answer, options, question} = questionsArray[index];
+    const [selectedOption, setSelectedOption] = useState(''); // Track selected option
+    const [showNoOptSelected, setShowNoOptSelected] = useState(false);
+
+    const handleOptionClick = (opt: string) => {
+        setSelectedOption(opt); // Update selected option
+        setShowNoOptSelected(false); // Hide 'Please select an answer' warning text.
+    };
 
     return (
         <Box css={optionStyles.wrapper}>
@@ -121,6 +128,8 @@ const Question = () => {
                             key={opt}
                             text={opt}
                             optLetter={optionLetter}
+                            isSelected={selectedOption === opt} // Check if this option is selected
+                            onClick={() => handleOptionClick(opt)} // Handle click
                         />
                     );
                 })}
@@ -129,11 +138,16 @@ const Question = () => {
                     textStyle="headingTitle"
                     css={optionStyles.submitAndNextBtn}
                     onClick={() => {
-                        checkAnswer(answer);
+                        if (selectedOption === '') {
+                            setShowNoOptSelected(true);
+                            return;
+                        }
+                        checkAnswer(answer === selectedOption);
+                        setSelectedOption('');
                     }}>
                     Submit Answer
                 </Box>
-                <HStack gap="8px" display="none">
+                <HStack gap="8px" display={showNoOptSelected ? 'flex' : 'none'}>
                     <Image
                         src="images/icon-incorrect.svg"
                         alt="please select an answer"
