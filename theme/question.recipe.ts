@@ -29,10 +29,6 @@ export const questionRecipe = defineSlotRecipe({
                 bgGradient:
                     'linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%)',
             },
-            _focus: {
-                bgGradient:
-                    'linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%)',
-            },
             _hover: {
                 cursor: 'pointer',
                 bgGradient:
