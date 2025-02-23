@@ -19,6 +19,9 @@ export const optionTileRecipe = defineSlotRecipe({
                 borderColor: 'brandPurple',
             },
             _active: {borderColor: 'brandPurple', borderWidth: '3px'},
+            _disabled: {
+                cursor: 'not-allowed',
+            },
         },
         option: {
             width: {base: '40px', md: '56px'},
