@@ -9,76 +9,46 @@ import {
 } from '@chakra-ui/react';
 import {Progress} from '@chakra-ui/react';
 import {useState} from 'react';
-
-interface OptionTileType {
-    text: string;
-    optLetter: string;
-    isSelected: boolean;
-    onClick: () => void;
-}
-
-const OptionTile = ({text, optLetter, isSelected, onClick}: OptionTileType) => {
-    const recipe = useSlotRecipe({key: 'optionTile'});
-    const optionTileStyles = recipe();
-
-    return (
-        <Box
-            as="button"
-            css={{
-                '&:hover div span:first-of-type': {
-                    bgColor: '#F6E7FF',
-                    color: 'brandPurple',
-                },
-                ...optionTileStyles.button,
-            }}
-            borderColor={isSelected ? 'brandPurple' : ''}
-            borderWidth={isSelected ? '3px' : ''}
-            onClick={() => {
-                onClick();
-            }}>
-            <HStack gap={{base: '1rem', md: '32px'}}>
-                <Box
-                    as="span"
-                    textStyle="headingTitle"
-                    bgColor={isSelected ? 'brandPurple' : 'lightGrey'}
-                    color={isSelected ? 'white' : 'greyNavy'}
-                    css={optionTileStyles.option}>
-                    {optLetter}
-                </Box>
-
-                <Box as="span" textStyle="headingTitle">
-                    {text}
-                </Box>
-            </HStack>
-            <HStack>
-                <Image
-                    src="images/icon-correct.svg"
-                    alt="checkmark"
-                    display="none"
-                />
-                <Image
-                    src="images/icon-incorrect.svg"
-                    alt="checkmark"
-                    display="none"
-                />
-            </HStack>
-        </Box>
-    );
-};
+import {OptionTile} from './option-tile';
 
 const Question = () => {
     const recipe = useSlotRecipe({key: 'question'});
     const optionStyles = recipe();
 
-    const {questions, index, checkAnswer} = useGlobalContext();
+    const {questions, index, checkAnswer, nextQuestion} = useGlobalContext();
     const {questions: questionsArray} = questions[0];
     const {answer, options, question} = questionsArray[index];
     const [selectedOption, setSelectedOption] = useState(''); // Track selected option
     const [showNoOptSelected, setShowNoOptSelected] = useState(false);
 
+    const [isSubmitted, setIsSubmitted] = useState(false); // Track if the form is submitted
+
     const handleOptionClick = (opt: string) => {
         setSelectedOption((prev) => (prev === opt ? '' : opt)); // Toggle selection - allows for selecting and deselecting
         setShowNoOptSelected(false); // Hide 'Please select an answer' warning text.
+    };
+
+    // const handleOptionClick = (opt) => {
+    //     if (!isSubmitted) {
+    //         setSelectedOption(opt); // Update selected option only if not submitted
+    //     }
+    // };
+
+    const handleSubmit = () => {
+        // setIsSubmitted(true); // Mark as submitted
+        if (selectedOption === '') {
+            setShowNoOptSelected(true);
+            return;
+        }
+        checkAnswer(answer === selectedOption);
+        setIsSubmitted(true);
+    };
+
+    const handleNextQuestion = () => {
+        // Reset state for the next question
+        setSelectedOption('');
+        setIsSubmitted(false);
+        nextQuestion();
     };
 
     return (
@@ -123,13 +93,16 @@ const Question = () => {
                 {options?.map((opt: string, i: number) => {
                     // Dynamically generate option letters (A, B, C, etc.)
                     const optionLetter = String.fromCharCode(65 + i); // 65 is ASCII for 'A'
+                    const isCorrect = opt === answer; // Check if this option is the correct one
                     return (
                         <OptionTile
                             key={opt}
                             text={opt}
                             optLetter={optionLetter}
                             isSelected={selectedOption === opt} // Check if this option is selected
+                            isCorrect={isCorrect} // Pass whether this option is correct or not.
                             onClick={() => handleOptionClick(opt)} // Handle click
+                            isSubmitted={isSubmitted}
                         />
                     );
                 })}
@@ -137,15 +110,9 @@ const Question = () => {
                     as="button"
                     textStyle="headingTitle"
                     css={optionStyles.submitAndNextBtn}
-                    onClick={() => {
-                        if (selectedOption === '') {
-                            setShowNoOptSelected(true);
-                            return;
-                        }
-                        checkAnswer(answer === selectedOption);
-                        setSelectedOption('');
-                    }}>
-                    Submit Answer
+                    onClick={isSubmitted ? handleNextQuestion : handleSubmit}>
+                    {/* Submit Answer */}
+                    {isSubmitted ? 'Next Question' : 'Submit Answer'}
                 </Box>
                 <HStack gap="8px" display={showNoOptSelected ? 'flex' : 'none'}>
                     <Image
