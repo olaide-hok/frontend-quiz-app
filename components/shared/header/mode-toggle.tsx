@@ -13,7 +13,7 @@ const ModeToggle = () => {
     const [checked, setChecked] = useState(false);
 
     return (
-        <Flex gap="1rem">
+        <Flex gap="1rem" align="center">
             <LuSun />
             <Switch
                 checked={checked}
