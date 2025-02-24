@@ -28,20 +28,13 @@ const Question = () => {
         setShowNoOptSelected(false); // Hide 'Please select an answer' warning text.
     };
 
-    // const handleOptionClick = (opt) => {
-    //     if (!isSubmitted) {
-    //         setSelectedOption(opt); // Update selected option only if not submitted
-    //     }
-    // };
-
     const handleSubmit = () => {
-        // setIsSubmitted(true); // Mark as submitted
         if (selectedOption === '') {
             setShowNoOptSelected(true);
             return;
         }
         checkAnswer(answer === selectedOption);
-        setIsSubmitted(true);
+        setIsSubmitted(true); // Mark as submitted
     };
 
     const handleNextQuestion = () => {
