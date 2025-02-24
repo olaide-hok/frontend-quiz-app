@@ -59,6 +59,10 @@ export const OptionTile = ({
                     bgColor: '#F6E7FF',
                     color: 'brandPurple',
                 },
+                '&[data-selected="true"]:hover div span:first-of-type': {
+                    bgColor: 'brandPurple',
+                    color: 'white',
+                },
                 '&:disabled:hover div span:first-of-type': {
                     bgColor: 'lightGrey',
                     color: 'greyNavy',
@@ -68,6 +72,7 @@ export const OptionTile = ({
             borderColor={borderColor}
             borderWidth={borderWidth}
             disabled={isSubmitted}
+            data-selected={isSelected}
             onClick={() => {
                 onClick();
             }}>
