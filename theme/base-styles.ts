@@ -5,10 +5,6 @@ const baseStyles = {
             padding: 0,
             margin: 0,
         },
-        // ':root': {
-        //     background: 'background',
-        //     color: 'foreground,
-        // },
         html: {
             scrollBehavior: 'smooth',
         },
