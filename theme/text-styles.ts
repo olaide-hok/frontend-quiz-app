@@ -47,7 +47,7 @@ export const textStyles = defineTextStyles({
             fontFamily: 'Rubik',
             fontWeight: '400',
             fontSize: {base: '18px', md: '24px'},
-            lineHeight: '150%',
+            lineHeight: {base: '100%', md: '150%'},
         },
     },
 });
