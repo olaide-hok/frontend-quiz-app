@@ -4,12 +4,11 @@ import QuizTitle from '../quiz-title';
 import subjects from '@/subjects';
 
 const Score = () => {
-    const {questions, quiz, correct, showScore} = useGlobalContext();
+    const {questions, quiz, correct, playAgain} = useGlobalContext();
     const {questions: questionsArray} = questions[0];
 
     return (
         <Stack
-            display={showScore ? 'flex' : 'none'}
             direction={{base: 'column', lg: 'row'}}
             px={{base: '24px', md: '64px', lg: 0}}
             pt={{base: '32px', md: '49px', lg: 0}}
@@ -77,7 +76,7 @@ const Score = () => {
                     width="100%"
                     cursor="pointer"
                     onClick={() => {
-                        console.log('Play Again!');
+                        playAgain();
                     }}>
                     Play Again
                 </Box>
