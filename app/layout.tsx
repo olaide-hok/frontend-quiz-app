@@ -1,11 +1,19 @@
 import {Provider} from '@/components/ui/provider';
 import {QuizProvider} from '@/context';
 import type {Metadata} from 'next';
-import {Rubik} from 'next/font/google';
+import localFont from 'next/font/local';
 
-const rubikSerif = Rubik({
-    variable: '--font-rubik-serif',
-    subsets: ['latin'],
+const rubik = localFont({
+    src: [
+        {
+            path: '../assets/fonts/Rubik-Italic-VariableFont_wght.ttf',
+            style: 'italic',
+        },
+        {
+            path: '../assets/fonts/Rubik-VariableFont_wght.ttf',
+            style: 'normal',
+        },
+    ],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +28,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`bodycss ${rubikSerif.variable}`}>
+            <body className={`bodycss ${rubik.className}`}>
                 <Provider>
                     <QuizProvider>{children}</QuizProvider>
                 </Provider>
