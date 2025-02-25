@@ -33,7 +33,7 @@ const SubjectTile = ({name, src, bgColor}: SubjectTileProps) => {
             width={{base: '100%', lg: '564px'}}>
             <Image
                 src={src}
-                alt={name}
+                alt={name + ' icon'}
                 bgColor={bgColor}
                 width={{base: '40px', lg: '56px'}}
                 height={{base: '40px', lg: '56px'}}

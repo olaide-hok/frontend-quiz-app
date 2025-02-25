@@ -27,7 +27,7 @@ const QuizTitle = ({quiz, subjects}: QuizTitleType) => {
             _dark={{color: 'white'}}>
             <Image
                 src={imgSrc}
-                alt={name}
+                alt={name + ' icon'}
                 bgColor={bgColor}
                 width={{base: '40px', lg: '56px'}}
                 height={{base: '40px', lg: '56px'}}
