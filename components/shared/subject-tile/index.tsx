@@ -26,7 +26,7 @@ const SubjectTile = ({name, src, bgColor}: SubjectTileProps) => {
             fontSize={{base: '18px', md: '28px'}}
             fontWeight="500"
             p={{base: '12px', lg: '20px'}}
-            borderRadius="12px"
+            borderRadius={{base: '12px', md: '24px'}}
             bgColor="white"
             shadow="0px 16px 40px 0px rgba(143, 160, 193, 0.14)"
             _hover={{cursor: 'pointer'}}
