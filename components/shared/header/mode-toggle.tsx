@@ -10,7 +10,7 @@ import {useColorMode} from '@/components/ui/color-mode';
 // { checked: boolean | ((prevState: boolean) => boolean) }
 const ModeToggle = () => {
     const {toggleColorMode} = useColorMode();
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true);
 
     return (
         <Flex gap="1rem" align="center">
