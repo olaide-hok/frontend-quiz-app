@@ -5,6 +5,7 @@ import subjects from '@/subjects';
 const Landing = () => {
     return (
         <Flex
+            role="landing"
             justify="space-between"
             flexDir={{base: 'column', lg: 'row'}}
             py={{base: '2rem', md: '40px', lg: '0'}}

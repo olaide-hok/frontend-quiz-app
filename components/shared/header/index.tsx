@@ -10,6 +10,7 @@ const Header = () => {
     const {quiz} = useGlobalContext();
     return (
         <Flex
+            role="quiz title and toggle theme"
             justify="space-between"
             align="center"
             py={{base: '1rem', md: '40px', lg: '0'}}
