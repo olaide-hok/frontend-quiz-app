@@ -7,7 +7,6 @@ import {Switch} from '@/components/ui/switch';
 import {LuMoon, LuSun} from 'react-icons/lu';
 import {useColorMode} from '@/components/ui/color-mode';
 
-// { checked: boolean | ((prevState: boolean) => boolean) }
 const ModeToggle = () => {
     const {toggleColorMode} = useColorMode();
     const [checked, setChecked] = useState(true);
@@ -29,6 +28,7 @@ const ModeToggle = () => {
                         bgColor: 'white',
                     },
                 }}
+                label="toggle theme"
             />
             <LuMoon />
         </Flex>
