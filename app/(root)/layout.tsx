@@ -8,8 +8,7 @@ export default function RootLayout({
 }>) {
     return (
         <Container
-            // className="bodycss"
-            role="header"
+            as="main"
             maxW="1160px"
             padding={0}
             mt={{lg: '97px'}}
